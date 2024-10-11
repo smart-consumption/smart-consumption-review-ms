@@ -1,7 +1,8 @@
 package com.unicauca.smart_consumption.infrastructure.pattern.mapper;
 
 import com.unicauca.smart_consumption.domain.product.Product;
-import com.unicauca.smart_consumption.infrastructure.modules.product.dataproviders.command.sql.ProductJpaEntity;
+import com.unicauca.smart_consumption.infrastructure.modules.product.dataproviders.jpa.ProductJpaEntity;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

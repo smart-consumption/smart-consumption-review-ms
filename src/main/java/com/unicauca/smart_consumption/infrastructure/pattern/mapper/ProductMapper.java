@@ -4,8 +4,6 @@ import com.unicauca.smart_consumption.domain.product.Product;
 import com.unicauca.smart_consumption.infrastructure.pattern.dto.ProductDto;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-
 
 /**
  * Mapper interface for converting between {@link ProductDto} and {@link Product}.

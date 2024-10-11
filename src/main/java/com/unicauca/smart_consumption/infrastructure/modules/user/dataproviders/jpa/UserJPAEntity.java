@@ -1,7 +1,7 @@
 package com.unicauca.smart_consumption.infrastructure.modules.user.dataproviders.jpa;
 
 import com.unicauca.smart_consumption.infrastructure.modules.city.dataproviders.jpa.CityJPAEntity;
-import com.unicauca.smart_consumption.infrastructure.modules.product.dataproviders.command.sql.ProductJpaEntity;
+import com.unicauca.smart_consumption.infrastructure.modules.product.dataproviders.jpa.ProductJpaEntity;
 import com.unicauca.smart_consumption.infrastructure.modules.review.dataproviders.jpa.ReviewJPAEntity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;

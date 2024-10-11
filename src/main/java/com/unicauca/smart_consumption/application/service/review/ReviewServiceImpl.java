@@ -2,7 +2,7 @@ package com.unicauca.smart_consumption.application.service.review;
 
 import com.unicauca.smart_consumption.domain.common.ResponseDto;
 import com.unicauca.smart_consumption.domain.constant.MessagesConstant;
-import com.unicauca.smart_consumption.domain.product.ports.in.IProductQueryService;
+import com.unicauca.smart_consumption.domain.product.ports.in.IProductService;
 import com.unicauca.smart_consumption.domain.review.Review;
 import com.unicauca.smart_consumption.domain.review.ports.in.IReviewService;
 import com.unicauca.smart_consumption.domain.review.ports.out.IReviewRepository;
@@ -22,7 +22,7 @@ import java.util.List;
 public class ReviewServiceImpl implements IReviewService {
 
     private final IReviewRepository reviewRepository;
-    private final IProductQueryService productQueryService;
+    private final IProductService productRepository;
     private final IUserRepository userRepository;
     
 
@@ -30,7 +30,7 @@ public class ReviewServiceImpl implements IReviewService {
     public ResponseDto<Review> createReview(Review review, String userId, String productId) {
         review.setUser(userRepository.findUserById(userId).orElseThrow(() -> new BusinessRuleException(HttpStatus.BAD_REQUEST.value(), MessagesConstant.EM002,
                 MessageLoader.getInstance().getMessage(MessagesConstant.EM002, userId))));
-        review.setProduct(productQueryService.findProductById(productId).getData());
+        review.setProduct(productRepository.findProductById(productId).getData());
         Review createdReview = reviewRepository.createReview(review);
         return new ResponseDto<>(HttpStatus.CREATED.value(),
                 MessageLoader.getInstance().getMessage(MessagesConstant.IM002), createdReview);

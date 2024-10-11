@@ -1,7 +1,7 @@
 package com.unicauca.smart_consumption.infrastructure.modules.review.dataproviders.jpa;
 
 import com.unicauca.smart_consumption.domain.product.Rating;
-import com.unicauca.smart_consumption.infrastructure.modules.product.dataproviders.command.sql.ProductJpaEntity;
+import com.unicauca.smart_consumption.infrastructure.modules.product.dataproviders.jpa.ProductJpaEntity;
 import com.unicauca.smart_consumption.infrastructure.modules.user.dataproviders.jpa.UserJPAEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

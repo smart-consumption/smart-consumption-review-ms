@@ -3,7 +3,7 @@ package com.unicauca.smart_consumption.application.service.user;
 import com.unicauca.smart_consumption.domain.common.ResponseDto;
 import com.unicauca.smart_consumption.domain.constant.MessagesConstant;
 import com.unicauca.smart_consumption.domain.product.Product;
-import com.unicauca.smart_consumption.domain.product.ports.in.IProductQueryService;
+import com.unicauca.smart_consumption.domain.product.ports.in.IProductService;
 import com.unicauca.smart_consumption.domain.user.User;
 import com.unicauca.smart_consumption.domain.user.ports.in.IUserService;
 import com.unicauca.smart_consumption.domain.user.ports.out.IUserRepository;
@@ -20,7 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class UserServiceImpl implements IUserService {
     private final IUserRepository userRepository;
-    private final IProductQueryService productQueryService;
+    private final IProductService productService;
 
     @Override
     public ResponseDto<User> createUser(User user) {
@@ -67,7 +67,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public ResponseDto<Product> addToWatchList(String userId, String productId) {
         User user=userRepository.findUserById(userId).get();
-        Product product=productQueryService.findProductById(productId).getData();
+        Product product=productService.findProductById(productId).getData();
         if(user.addProductToWatchList(product))
         {
             userRepository.updateUser(user.getId(), user);
@@ -81,7 +81,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public ResponseDto<Product> removeFromWatchList(String userId, String productId) {
         User user=userRepository.findUserById(userId).get();
-        Product product=productQueryService.findProductById(productId).getData();
+        Product product=productService.findProductById(productId).getData();
         if(user.deleteProductFromWatchList(product))
         {
             return new ResponseDto<>(HttpStatus.ACCEPTED.value(),
