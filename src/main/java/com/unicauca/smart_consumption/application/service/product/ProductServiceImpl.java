@@ -20,31 +20,6 @@ public class ProductServiceImpl implements IProductService{
     private final IProductRepository productRepository;
 
     @Override
-    public ResponseDto<Product> createProduct(Product product) {
-
-        Product productNew = productRepository.createProduct(product);
-
-        return new ResponseDto<>(HttpStatus.CREATED.value(),
-            MessageLoader.getInstance().getMessage(MessagesConstant.IM002), productNew);
-   
-    }
-
-    @Override
-    public ResponseDto<Product> updateProduct(String id, Product product) {
-        Product productUpdated = productRepository.updateProduct(id, product);
-        return new ResponseDto<>(HttpStatus.OK.value(),
-            MessageLoader.getInstance().getMessage(MessagesConstant.IM003), productUpdated);    
-    }
-
-    @Override
-    public ResponseDto<Void> deleteProduct(String id) {
-        productRepository.deleteProduct(id);
-        return new ResponseDto<>(HttpStatus.OK.value(),
-            MessageLoader.getInstance().getMessage(MessagesConstant.IM004));
-        
-    }
-
-    @Override
     public ResponseDto<Product> findProductById(final String id) {
         Product product = productRepository.findProductById(id)
             .orElseThrow(() -> new BusinessRuleException(HttpStatus.BAD_REQUEST.value(), MessagesConstant.EM002,
