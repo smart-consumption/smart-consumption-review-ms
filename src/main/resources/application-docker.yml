@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 0
   servlet:
     context-path: /smart-consumption/api/v1
 
@@ -19,3 +19,11 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://smart-consumption-register-ms:8761/eureka/
+  
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
