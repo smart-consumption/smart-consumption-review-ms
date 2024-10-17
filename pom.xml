@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.unicauca</groupId>
-	<artifactId>smart_consumption</artifactId>
+	<artifactId>smart-consumption-review-ms</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>smart_consumption</name>
+	<name>smart-consumption-review-ms</name>
 	<description>Alicacion de buqueda de ofertas locales para promover el conusmo inteligente</description>
 	<url/>
 	<licenses>
@@ -94,6 +94,11 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.6.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
 	</dependencies>
 

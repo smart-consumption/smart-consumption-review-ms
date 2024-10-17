@@ -6,12 +6,16 @@ import lombok.ToString;
 
 import java.util.Objects;
 
+
 @Getter
 @EqualsAndHashCode
 @ToString
 public class Category {
 
-    private final String categoryName;
+    private String categoryName;
+
+    public Category() {
+    }
 
     public Category(String categoryName) {
         if (!Objects.nonNull(categoryName) || categoryName.isEmpty()) {

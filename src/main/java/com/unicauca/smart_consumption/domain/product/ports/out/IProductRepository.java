@@ -9,7 +9,16 @@ import com.unicauca.smart_consumption.domain.product.Product;
  * Interface that defines CRUD operations for the {@link Product} entity.
  */
 public interface IProductRepository {
-    /**
+
+  /**
+   * Creates a new product in the system.
+   *
+   * @param product The {@link Product} to be created.
+   * @return The created {@link Product}.
+   */
+  Product createProduct(Product product);
+
+  /**
    * Finds a product in the system by its ID.
    *
    * @param id The ID of the {@link Product} to be retrieved.

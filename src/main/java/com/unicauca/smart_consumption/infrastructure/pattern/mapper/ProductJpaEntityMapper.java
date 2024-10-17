@@ -1,6 +1,10 @@
 package com.unicauca.smart_consumption.infrastructure.pattern.mapper;
 
+import com.unicauca.smart_consumption.domain.product.Category;
+import com.unicauca.smart_consumption.domain.product.Detail;
 import com.unicauca.smart_consumption.domain.product.Product;
+import com.unicauca.smart_consumption.infrastructure.modules.product.dataproviders.common.CategoryEmbeddable;
+import com.unicauca.smart_consumption.infrastructure.modules.product.dataproviders.common.DetailEmbeddable;
 import com.unicauca.smart_consumption.infrastructure.modules.product.dataproviders.jpa.ProductJpaEntity;
 
 import org.mapstruct.Mapper;
@@ -27,6 +31,42 @@ public interface ProductJpaEntityMapper
      */
     @Mapping(target = "reviews", ignore = true)
     Product toDomain(ProductJpaEntity dto);
+
+    default CategoryEmbeddable map(Category category) {
+        if (category == null) {
+            return null;
+        }
+        CategoryEmbeddable categoryEmbeddable = new CategoryEmbeddable();
+        categoryEmbeddable.setCategoryName(category.getCategoryName());
+        return categoryEmbeddable;
+    }
+
+    default Category map(CategoryEmbeddable categoryEmbeddable) {
+        if (categoryEmbeddable == null) {
+            return null;
+        }
+        Category category = new Category(categoryEmbeddable.getCategoryName()); 
+        return category;
+    }
+
+    default DetailEmbeddable map(Detail detail) {
+        if (detail == null) {
+            return null;
+        }
+        DetailEmbeddable detailEmbeddable = new DetailEmbeddable();
+        detailEmbeddable.setDescription(detail.getDescription());
+        detailEmbeddable.setSpecifications(detail.getSpecifications());
+        return detailEmbeddable;
+    }
+
+    default Detail map(DetailEmbeddable detailEmbeddable) {
+        if (detailEmbeddable == null) {
+            return null;
+        }
+        Detail detail = new Detail(detailEmbeddable.getDescription(), detailEmbeddable.getSpecifications());
+        return detail;
+    }
+
 
     /**
      * Maps a domain entity to a DTO (Data Transfer Object).

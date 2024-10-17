@@ -10,12 +10,14 @@ import lombok.ToString;
 public class SustainabilityCriteria {
     private double carbonFootprint;
     private double energyEfficiency;
-    private final double resourceUsage;
-    private final double wasteManagement;
+    private double resourceUsage;
+    private double wasteManagement;
     private double sustainabilityScore;
 
-    public SustainabilityCriteria(double carbonFootprint, double energyEfficiency,
-                                  double resourceUsage, double wasteManagement) {
+    public SustainabilityCriteria() {
+    }
+
+    public SustainabilityCriteria(double carbonFootprint, double energyEfficiency, double resourceUsage, double wasteManagement) {
         this.carbonFootprint = carbonFootprint;
         this.energyEfficiency = energyEfficiency;
         this.resourceUsage = resourceUsage;

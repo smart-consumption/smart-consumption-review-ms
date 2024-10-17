@@ -1,6 +1,7 @@
 package com.unicauca.smart_consumption.domain.product;
 
 import java.util.Objects;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -10,8 +11,11 @@ import lombok.ToString;
 @ToString
 public class Detail {
 
-    private final String description;
-    private final String specifications;
+    private String description;
+    private String specifications;
+
+    public Detail() {
+    }
 
     public Detail(String description, String specifications) {
         if (!Objects.nonNull(description) || description.trim().isEmpty()) {

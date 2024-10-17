@@ -35,5 +35,12 @@ public class ProductRepositoryAdapter implements IProductRepository{
         return this.productJpaRepository.findAllById(ids).
         stream().map(productPostgresMapper::toDomain).toList();
     }
+
+    @Override
+    public Product createProduct(Product product) {
+        ProductJpaEntity productJpaEntity = productPostgresMapper.toTarget(product);
+        final var  savedProduct = productPostgresMapper.toDomain(productJpaRepository.save(productJpaEntity));
+        return savedProduct;
+    }
     
 }

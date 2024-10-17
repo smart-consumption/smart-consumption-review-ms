@@ -1,6 +1,8 @@
 package com.unicauca.smart_consumption.infrastructure.pattern.mapper;
 
+import com.unicauca.smart_consumption.domain.product.Category;
 import com.unicauca.smart_consumption.domain.user.User;
+import com.unicauca.smart_consumption.infrastructure.pattern.dto.CategoryDto;
 import com.unicauca.smart_consumption.infrastructure.pattern.dto.UserDto;
 import org.mapstruct.Mapper;
 
@@ -15,4 +17,12 @@ import org.mapstruct.Mapper;
  */
 @Mapper(componentModel = "spring")
 public interface UserMapper extends EntityMapper<UserDto, User> {
+
+    default Category map(CategoryDto categoryDto) {
+        if (categoryDto == null) {
+            return null;
+        }
+        Category category = new Category(categoryDto.getCategoryName());
+        return category;
+    }
 }
