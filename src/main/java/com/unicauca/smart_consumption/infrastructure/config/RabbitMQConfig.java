@@ -18,6 +18,12 @@ public class RabbitMQConfig {
     public static final String PRODUCT_EXCHANGE = "product.exchange";
     public static final String ROUTING_KEY_PRODUCT_CREATED = "product.created";
     public static final String ROUTING_KEY_PRODUCT_UPDATED = "product.updated";
+    public static final String USER_EXCHANGE = "user.exchange";
+    public static final String USER_CREATED_QUEUE = "user.created.queue";
+    public static final String USER_UPDATED_QUEUE = "user.updated.queue";
+    public static final String ROUTING_KEY_USER_CREATED = "user.created";
+    public static final String ROUTING_KEY_USER_UPDATED = "user.updated";
+
 
   @Bean
   RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
@@ -57,5 +63,28 @@ public class RabbitMQConfig {
     return BindingBuilder.bind(productUpdatedQueue()).to(productExchange()).with(ROUTING_KEY_PRODUCT_UPDATED);
   }
 
+  @Bean
+  Queue userCreatedQueue() {
+      return new Queue(USER_CREATED_QUEUE, true);
+  }
 
+  @Bean
+  Queue userUpdatedQueue() {
+      return new Queue(USER_UPDATED_QUEUE, true);
+  }
+
+  @Bean
+  TopicExchange userExchange() {
+      return new TopicExchange(USER_EXCHANGE);
+  }
+
+  @Bean
+  Binding bindingUserCreated() {
+      return BindingBuilder.bind(userCreatedQueue()).to(userExchange()).with(ROUTING_KEY_USER_CREATED);
+  }
+
+  @Bean
+  Binding bindingUserUpdated() {
+      return BindingBuilder.bind(userUpdatedQueue()).to(userExchange()).with(ROUTING_KEY_USER_UPDATED);
+  }
 }
