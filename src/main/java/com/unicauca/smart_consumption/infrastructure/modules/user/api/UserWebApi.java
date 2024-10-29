@@ -21,7 +21,7 @@ import java.util.List;
 
 @Log4j2
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/review/user")
 @CrossOrigin(origins = "*" )
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 @Tag(name = "User APIs", description = "User web APIs")
