@@ -46,4 +46,13 @@ public interface IReviewService {
      */
     ResponseDto<List<Review>> findAllReviews();
 
+        /**
+     * Retrieves a list of all reviews in the system for a specific product.
+     *
+     * @param productId The ID of the product to retrieve reviews for.
+     * @return A list of all {@link Review} for the specified product.
+     */
+    List<Review> findReviewsByProductId(String productId);
+
+
 }

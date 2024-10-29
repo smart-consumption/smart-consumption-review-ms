@@ -79,4 +79,18 @@ public class ReviewRepositoryAdapter implements IReviewRepository {
                 }
                 ).toList();
     }
+
+    @Override
+    public List<Review> findReviewsByProductId(String productId) {
+        return reviewJPARepository.findReviewsByProductId(productId).stream()
+                .map(entity ->{
+                    Review domainEntity = new Review();
+                    domainEntity.setId(entity.getId());
+                    domainEntity.setRating(entity.getRating());
+                    domainEntity.setComment(entity.getComment());
+                    domainEntity.setDate(entity.getDate());
+                    return domainEntity;
+                }
+                ).toList();
+    }
 }

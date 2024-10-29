@@ -71,4 +71,9 @@ public class ReviewServiceImpl implements IReviewService {
                 MessageLoader.getInstance().getMessage(MessagesConstant.IM001), reviews);
     }
 
+    @Override
+    public List<Review> findReviewsByProductId(String productId) {
+        return reviewRepository.findReviewsByProductId(productId);
+    }
+
 }

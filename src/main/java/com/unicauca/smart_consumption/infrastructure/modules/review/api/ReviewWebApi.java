@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,7 @@ import java.util.List;
 @Log4j2
 @RestController
 @RequestMapping(value = "/review")
+@CrossOrigin(origins = "*" )
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 @Tag(name = "Review APIs", description = "Review web APIs")
 public class ReviewWebApi {
@@ -75,6 +77,12 @@ public class ReviewWebApi {
                 reviewResponse.getMessage(),
                 reviewResponse.getData().stream().map(reviewMapper::toTarget).toList()
         ).of();
+    }
+
+    @GetMapping("/review/{productId}")
+    public ResponseEntity<ResponseDto<List<ReviewDto>>> findReviewsByProductId(@PathVariable String productId){
+        List<Review> reviews = reviewService.findReviewsByProductId(productId);
+        return new ResponseDto<>(200, "Reviews found", reviews.stream().map(reviewMapper::toTarget).toList()).of();
     }
 
 }
