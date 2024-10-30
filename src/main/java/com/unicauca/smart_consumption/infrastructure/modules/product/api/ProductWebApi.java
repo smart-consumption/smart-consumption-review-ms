@@ -39,7 +39,7 @@ public class ProductWebApi {
     return productDtoResponse.of();
   }
 
-  @GetMapping
+  @GetMapping("/all")
   public ResponseEntity<ResponseDto<List<ProductDto>>> getAllProducts() {
     ResponseDto<List<Product>> productResponse = productCommandService.findAllProducts();
     return new ResponseDto<>(
