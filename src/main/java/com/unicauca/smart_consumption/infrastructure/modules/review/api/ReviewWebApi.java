@@ -80,7 +80,7 @@ public class ReviewWebApi {
     }
 
     @GetMapping("/productreview/{productId}")
-    public ResponseEntity<ResponseDto<List<ReviewDto>>> findReviewsByProductId(@PathVariable String productId){
+    public ResponseEntity<ResponseDto<List<ReviewDto>>> ReviewsByProductId(@PathVariable String productId){
         List<Review> reviews = reviewService.findReviewsByProductId(productId);
         return new ResponseDto<>(200, "Reviews found", reviews.stream().map(reviewMapper::toTarget).toList()).of();
     }
