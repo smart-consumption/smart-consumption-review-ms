@@ -22,7 +22,6 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 @RestController
 @RequestMapping(value = "/review/product")
-@CrossOrigin(origins = "*" )
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 @Tag(name = "Product APIs", description = "Product web APIs for command services")
 public class ProductWebApi {
