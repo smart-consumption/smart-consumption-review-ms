@@ -1,5 +1,5 @@
 server:
-  port: 9001
+  port: 8080
   servlet:
     context-path: /smart-consumption/api/v1
 
@@ -19,3 +19,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+
+  sql:
+    init:
+      mode: always
