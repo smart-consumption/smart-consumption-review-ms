@@ -22,5 +22,4 @@ jobs:
         cache: maven
     - name: Run integration tests with maven
       run: |
-        cd smart-consumption-review-ms
         mvn test
