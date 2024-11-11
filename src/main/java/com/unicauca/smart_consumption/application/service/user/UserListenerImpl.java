@@ -23,4 +23,12 @@ public class UserListenerImpl implements IUserListener{
         System.out.println("User received: " + user);
         userRepository.createUser(user);
     }
+
+    @Override
+    @RabbitListener(queues = RabbitMQConfig.USER_UPDATED_QUEUE)
+    public void receiveUpdatedUser(User user) {
+        System.out.println("User received: " + user);
+        userRepository.updateUser(user.getId(), user);
+    }
+
 }
