@@ -9,7 +9,7 @@ docker-compose up
 - PostgreSQL
 - MongoDB
 
-#### Los servicios estarán disponibles en los siguientes puertos locales:
+### Los servicios estarán disponibles en los siguientes puertos locales:
 
 PostgreSQL: localhost:10001
 
