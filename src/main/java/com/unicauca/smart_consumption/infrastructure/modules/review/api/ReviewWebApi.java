@@ -7,6 +7,7 @@ import com.unicauca.smart_consumption.infrastructure.pattern.dto.ReviewDto;
 import com.unicauca.smart_consumption.infrastructure.pattern.mapper.ReviewMapper;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class ReviewWebApi {
     public ResponseEntity<ResponseDto<ReviewDto>> createReview(
             @PathVariable String userId,
             @PathVariable String productId,
-            @RequestBody ReviewDto reviewDto) {
+            @Valid @RequestBody ReviewDto reviewDto) {
         Review review = reviewMapper.toDomain(reviewDto);
         ResponseDto<Review> reviewResponse = reviewService.createReview(review,userId,productId);
         ReviewDto createdReviewDto = reviewMapper.toTarget(reviewResponse.getData());
